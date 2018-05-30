@@ -1,11 +1,10 @@
 <template>
 	<div class="userbox">
 		<div class="userinfo-box clearfix">
-			<img class="usericon" src="/static/list2.jpg"/>
+			<img class="usericon" src="static/usericon.jpg"/>
 			<div class="userinfo">
 				<button>登录</button>
-				<p>
-				</p>
+				<p>累计阅读：<span>{{time}}</span></p>
 			</div>
 		</div>
 		<div>
@@ -47,7 +46,8 @@ export default{
   		list:[{name:'礼包',src:'static/box.png'},
   		{name:'消息',src:'static/msg.png'},
   		{name:'下载',src:'static/arrow.png'},
-  		{name:'钱包',src:'static/bag.png'}]
+  		{name:'钱包',src:'static/bag.png'}],
+  		time:0,
   	}
   },
   computed:{
@@ -67,23 +67,28 @@ export default{
 		border-radius: 50%;
 		width:5em;
 		height:5em;
+		margin-top: 1em;
 		float: left;
 	}
 	.userinfo-box{
 		background: url(/static/bg6.jpg);
 		padding:1em 2em;
-		height:9.65em;
+		height:9.15em;
 		box-sizing: border-box;
 
 		.userinfo{
 			float: left;
-			margin-left: @margin-width;
-
+			margin-left: 1.65em;
+			p{font-size: 0.75em;margin-top:@margin-width;}
+			span{color:#68dff0;}
 			button{
 				background: transparent;
 				border:0;
+				color: #555;
 				font-weight: bold;
-				font-size: 1.25em;
+				font-size: 1.35em;
+				margin-top: 1.2em;
+				&:hover{color:#68dff0;outline:none;}
 			}
 		}
 	}

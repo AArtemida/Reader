@@ -39,4 +39,5 @@ body {
     clear: both;
     visibility: hidden;
 }
+.weui-cells{font-size:16px !important;}
 </style>
