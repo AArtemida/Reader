@@ -1,7 +1,7 @@
 <template>
 	<div class="userbox">
 		<div class="userinfo-box clearfix">
-			<img class="usericon" :src="userObj&&userObj.icon==''?'static/usericon.jpg':userObj.icon"/>
+			<img class="usericon" src="static/usericon.jpg"/>
 			<div class="userinfo">
 				<x-button mini plain link="/login" v-if="!userObj">登录</x-button>
 				<p class="username" v-else>{{userObj.userName}}</p>
