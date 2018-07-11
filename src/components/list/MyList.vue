@@ -2,12 +2,14 @@
   <div class="list_box">
     <div class="list_flex_box">
       <flexbox>
-        <flexbox-item><div class="flex-demo flex_left" :style="{backgroundImage:`url(${imgList[0].src})`}">
+        <flexbox-item><div class="flex-demo flex_left" :style="{backgroundImage:`linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .6)),url(${imgList[0].src})`}">
           <span class="fleximg_title" v-text="imgList[0].title"></span>
         </div></flexbox-item>
         <flexbox-item :span="5"><div class="flex-demo">
-          <div class="flex_right" :style="{backgroundImage:`url(${imgList[1].src})`}"><span class="fleximg_title" v-text="imgList[1].title"></span></div>
-          <div class="flex_right" :style="{backgroundImage:`url(${imgList[2].src})`}"><span class="fleximg_title" v-text="imgList[2].title"></span></div>
+          <div class="flex_right" :style="{backgroundImage:`linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .4)),url(${imgList[1].src})`}">
+            <span class="fleximg_title" v-text="imgList[1].title"></span></div>
+          <div class="flex_right" :style="{backgroundImage:`linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .4)),url(${imgList[2].src})`}">
+            <span class="fleximg_title" v-text="imgList[2].title"></span></div>
         </div></flexbox-item>
       </flexbox>
     </div>
@@ -19,10 +21,11 @@
     </button-tab>
   
     <panel :list="getList" type="5" @on-img-error="onImgError"></panel>
+    <load-more :show-loading="false" tip="暂无数据" background-color="#fbf9fe"></load-more>
   </div>
 </template>
 <script>
-import { Flexbox, FlexboxItem,Panel, ButtonTab, ButtonTabItem} from 'vux'
+import { Flexbox, FlexboxItem,Panel, ButtonTab, ButtonTabItem, LoadMore } from 'vux'
 export default {
   name:'list',
   components: {
@@ -30,7 +33,8 @@ export default {
     ButtonTabItem,
     ButtonTab,
     Flexbox,
-    FlexboxItem
+    FlexboxItem,
+    LoadMore
   },
   methods: {
     onImgError (item, $event) {
@@ -58,16 +62,16 @@ export default {
       list: [],
       imgList:[{
         src:'/static/list2.jpg',
-        title:'阅读1',
+        title:'最新资讯',
         link:''
       },
       {
         src:'/static/list1.jpg',
-        title:'阅读2',
+        title:'新书速递',
         link:''
       },{
         src:'/static/list5.jpg',
-        title:'阅读3',
+        title:'精选读物',
         link:''
       }],
     }
@@ -91,8 +95,9 @@ export default {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     position:relative;
+    text-align:center;
   }
-  .flex_after{
+ .flex_after{
     content:'';
     display: block;
     background: rgba(0,0,0,.4);
@@ -104,23 +109,17 @@ export default {
     height: 8.65em;
 
     &:after{
-      .flex_after;
     }
     &:hover{
-      
     }
   }
   .flex_right{
     .flexitem_mixin;
     height:4.12em;
-
-    &:after{
-      .flex_after;
-    }
   }
   .fleximg_title{
-    position: absolute;
-    top:36%;
+    position:relative;
+    top:35%;
   }
   .flex_right:first-child{
     margin-bottom:@margin-width/2;

@@ -1,12 +1,14 @@
 <template>
 	<div class="userbox">
 		<div class="userinfo-box clearfix">
-			<img class="usericon" src="static/usericon.jpg"/>
+			<img class="usericon" :src="userObj&&userObj.icon==''?'static/usericon.jpg':userObj.icon"/>
 			<div class="userinfo">
-				<button>登录</button>
-				<p>累计阅读：<span>{{time}}</span></p>
+				<x-button mini plain link="/login" v-if="!userObj">登录</x-button>
+				<p class="username" v-else>{{userObj.userName}}</p>
+				<p>累计阅读：<span v-text="userObj?userObj.readTime:0"></span></p>
 			</div>
 		</div>
+
 		<div>
 		  <grid>
 		    <grid-item  v-for="(item,index) in list" :label="item.name" :key="index">
@@ -14,22 +16,24 @@
 		    </grid-item>
 		  </grid>
 		</div>
-		<div >
+		<div>
 		  <group title="个人中心">
-	        <cell is-link>
-	          <span slot="title" style="color:green;"><span style="vertical-align:middle;">我的消息</span> <badge text="1"></badge></span>
+	        <cell is-link :style="{color:selectType==0?'green':''}">
+	          <span slot="title">
+	          <span style="vertical-align:middle;">我的消息</span> <badge text="1"></badge></span>
 	        </cell>
-	        <cell title="我的收藏" is-link></cell>
-	        <cell title="我的笔记" is-link></cell>
-	        <cell title="我的分享" is-link>
+	        <cell title="我的收藏" is-link :style="{color:selectType==1?'green':''}"></cell>
+	        <cell title="我的笔记" is-link :style="{color:selectType==2?'green':''}"></cell>
+	        <cell title="我的分享" is-link :style="{color:selectType==3?'green':''}">
 	        </cell>
-	        <cell title="我的评论" is-link></cell>
+	        <cell v-show="userObj" title="退出登录" style="color:#d72b2b;" @click.native="logout"></cell>
 	      </group>
 		</div>
+		<!-- <div class="bground" v-show="!userObj"></div> -->
 	</div>
 </template>
 <script>
-import { Cell, CellBox, CellFormPreview, Group, Badge,Grid, GridItem} from 'vux'
+import { Cell, CellBox, CellFormPreview, Group, Badge,Grid, GridItem, XButton, Loading, TransferDomDirective as TransferDom } from 'vux'
 export default{
   name:'user',
   components: {
@@ -39,7 +43,15 @@ export default{
     CellBox,
     Badge,
     Grid,
-    GridItem
+    GridItem,
+    XButton,
+    // Loading,
+  },
+  created(){
+  	// console.log(localStorage.getItem('user'))
+  },
+  directives: {
+    TransferDom
   },
   data(){
   	return {
@@ -47,17 +59,45 @@ export default{
   		{name:'消息',src:'static/msg.png'},
   		{name:'下载',src:'static/arrow.png'},
   		{name:'钱包',src:'static/bag.png'}],
-  		time:0,
+  		selectType:0,
   	}
   },
   computed:{
-  	userName:{
+  	userObj:{
   		get:function(){
-  			var uname = '';
-  			return uname
+  			var obj = localStorage.getItem('user');
+  			if(typeof obj != 'undefined'){
+  				obj = JSON.parse(obj)
+  			}else{
+  				obj = null;
+  			}
+  			return obj;
   		},
   		set:function(){}
   	}
+  },
+  methods:{
+  	clickType:function(type){
+  		console.log(type)
+  		if(typeof type != 'undefined'){
+  			this.selectType = type;
+  		}
+  	},
+  	logout(){
+  		localStorage.clear();
+  		this.showLoading ();
+  		setTimeout(() => {
+       		this.$router.push({ path: '/login' })
+        }, 1000);
+  	},
+  	showLoading () {
+      this.$vux.loading.show({
+        text: 'Loading'
+      })
+      setTimeout(() => {
+        this.$vux.loading.hide()
+      }, 2000)
+    },
   }
 }
 </script>
@@ -81,13 +121,15 @@ export default{
 			margin-left: 1.65em;
 			p{font-size: 0.75em;margin-top:@margin-width;}
 			span{color:#68dff0;}
-			button{
+			button,.username{
 				background: transparent;
 				border:0;
 				color: #555;
 				font-weight: bold;
 				font-size: 1.35em;
 				margin-top: 1.2em;
+				border:0px;
+				padding-left: 0;
 				&:hover{color:#68dff0;outline:none;}
 			}
 		}

@@ -55,5 +55,6 @@ export default {
       background: @blue;
     }
   }
+  .vux-flexbox-item{max-width: 180px;}
 }
 </style>

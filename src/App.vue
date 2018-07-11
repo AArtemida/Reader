@@ -1,24 +1,29 @@
 <template>
   <div id="app">
-	<MyHeader></MyHeader>
+	<MyHeader v-if="$route.meta.title != 'Login'"></MyHeader>
+	<!-- <router-view name="header"></router-view> -->
 <!-- 	<router-link to="/detail">路由4</router-link> -->
 	<router-view></router-view>
 
-    <MyFooter></MyFooter>
+    <MyFooter v-if="$route.meta.title != 'Login'"></MyFooter>
+    <!-- <router-view name="footer"></router-view> -->
   </div>
 </template>
 
 <script>
 import MyHeader from './components/MyHead'
-// import MySwiper from './components/MySwiper'
 import MyFooter from './components/MyFooter'
-// import recommend from './components/recommend'
 
 export default {
   name: 'app',
   components:{
   	'MyHeader': MyHeader,
   	'MyFooter': MyFooter,
+  },
+  watch:{
+  	'$route' (to,from){
+  		// console.log(to.meta.title)
+  	}
   }
 }
 </script>
@@ -40,4 +45,7 @@ body {
     visibility: hidden;
 }
 .weui-cells{font-size:16px !important;}
+[v-cloak]{
+    display: none;
+}
 </style>

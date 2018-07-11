@@ -2,11 +2,19 @@
   <div>
     <div class="vux-demo">
       <img class="logo" src="../assets/vux_logo.png">
-      <h1> </h1>
+      <h1 @click="ajaxFun">click </h1>
     </div>
     <group title="cell demo">
       <cell title="VUX" value="cool" is-link></cell>
     </group>
+
+    <div style="padding: 20px;">
+    	<p @click="test($event)" class="abc">click there</p>
+    	router
+    	<router-view name="a"></router-view>
+    	<router-view ></router-view>
+    	<router-link :to="{ name: 'user'}">User</router-link>
+    </div>
   </div>
 </template>
 
@@ -29,6 +37,24 @@ export default {
       // its initial state.
       msg: 'Hello World!'
     }
+  },
+  methods:{
+  	ajaxFun:function(){
+  		this.$ajax({
+		  method: 'post',
+		  url: '/user',
+		  data: {}
+		})
+		.then(res => {
+		 console.log(res)
+		})
+		.catch(err => {
+		 console.log(err)
+		})
+	},
+	test(e){
+		e.target.className +=' bbb';
+	}
   }
 }
 </script>
