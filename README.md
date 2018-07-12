@@ -31,4 +31,22 @@ npm install css-loader style-loader postcss-loader --save-dev
 npm install less less-loader --save
 ```
 
+# 页面
+### 首页
+![image](img/1531303274.png)
+
+### 列表
+![image](img/1531303289.png)
+
+### 用户
+![image](img/1531302936.png)
+
+### 详情
+![image](img/1531303307.png)
+
+### 登录
+![image](img/1531303073.png)
+
+（项目中的图片和文字均来源于网络，如有侵权请联系我删除）
+
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
