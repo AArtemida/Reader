@@ -61,16 +61,16 @@ export default {
     return {
       list: [],
       imgList:[{
-        src:'/static/list2.jpg',
+        src:'/static/img/list2.jpg',
         title:'最新资讯',
         link:''
       },
       {
-        src:'/static/list1.jpg',
+        src:'/static/img/list1.jpg',
         title:'新书速递',
         link:''
       },{
-        src:'/static/list5.jpg',
+        src:'/static/img/list5.jpg',
         title:'精选读物',
         link:''
       }],

@@ -5,7 +5,7 @@ export default{
   {
     id:0,
     imgback:'https://img3.doubanio.com/view/subject/m/public/s29746360.jpg',
-    img:'static/s29746360.jpg',
+    img:'static/img/s29746360.jpg',
     title:'故宫的古物之美',
     author:'祝勇',
     star:9.5,
@@ -15,7 +15,7 @@ export default{
   {
     id:1,
     imgback:'https://img3.doubanio.com/view/subject/m/public/s29588731.jpg',
-    img:'static/s29588731.jpg',
+    img:'static/img/s29588731.jpg',
     title:'人性的因素',
     author:'[英] 毛姆',
     star:8.8,
@@ -25,7 +25,7 @@ export default{
   {
     id:2,
     imgback:'https://img3.doubanio.com/view/subject/m/public/s29717612.jpg',
-    img:'static/s29717612.jpg',
+    img:'static/img/s29717612.jpg',
     title:'高兴死了！！！',
     author:'[美] 珍妮·罗森',
     star:7.2,
@@ -35,7 +35,7 @@ export default{
   {
     id:3,
     imgback:'https://img3.doubanio.com/view/subject/m/public/s29702964.jpg',
-    img:'static/s29702964.jpg',
+    img:'static/img/s29702964.jpg',
     title:'云彩收集者手册',
     author:'[英] 加文·普雷特-平尼',
     star:8.7,
@@ -45,7 +45,7 @@ export default{
   {
     id:4,
     imgback:'https://img3.doubanio.com/view/subject/m/public/s29709455.jpg',
-    img:'static/s29709455.jpg',
+    img:'static/img/s29709455.jpg',
     title:'清单人生',
     author:'[瑞典] 弗雷德里克·巴克曼 ',
     star:8.4,
@@ -55,7 +55,7 @@ export default{
   {
     id:5,
     imgback:'https://img3.doubanio.com/view/subject/m/public/s29661396.jpg',
-    img:'static/s29661396.jpg',
+    img:'static/img/s29661396.jpg',
     title:'黎明之街',
     author:'[日] 东野圭吾',
     star:7.5,

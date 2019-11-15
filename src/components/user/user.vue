@@ -1,7 +1,7 @@
 <template>
 	<div class="userbox">
 		<div class="userinfo-box clearfix">
-			<img class="usericon" src="static/usericon.jpg"/>
+			<img class="usericon" src="static/img/usericon.jpg"/>
 			<div class="userinfo">
 				<x-button mini plain link="/login" v-if="!userObj">登录</x-button>
 				<p class="username" v-else>{{userObj.userName}}</p>
@@ -55,10 +55,10 @@ export default{
   },
   data(){
   	return {
-  		list:[{name:'礼包',src:'static/box.png'},
-  		{name:'消息',src:'static/msg.png'},
-  		{name:'下载',src:'static/arrow.png'},
-  		{name:'钱包',src:'static/bag.png'}],
+  		list:[{name:'礼包',src:'static/img/box.png'},
+  		{name:'消息',src:'static/img/msg.png'},
+  		{name:'下载',src:'static/img/arrow.png'},
+  		{name:'钱包',src:'static/img/bag.png'}],
   		selectType:0,
   	}
   },
@@ -111,7 +111,7 @@ export default{
 		float: left;
 	}
 	.userinfo-box{
-		background: url(/static/bg6.jpg);
+		background: url(/static/img/bg6.jpg);
 		padding:1em 2em;
 		height:9.15em;
 		box-sizing: border-box;
